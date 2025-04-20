@@ -10,7 +10,7 @@ import {
 	Divider,
 	Container,
 } from "@mui/material";
-import { styles } from "./requestInviteDialog.styles";
+import { styles } from "../styles/requestInviteDialog.styles";
 
 export interface IInviteDialogRendererProps {
 	shouldDialogOpen: boolean;
@@ -51,6 +51,7 @@ const InviteDialogRenderer: React.FC<IInviteDialogRendererProps> = (props) => {
 	return (
 		<Dialog
 			id="request-invite-dialog-container"
+			data-testid="request-invite-dialog-container"
 			open={shouldDialogOpen}
 			onClose={onDialogClose}
 			slotProps={{
@@ -60,13 +61,14 @@ const InviteDialogRenderer: React.FC<IInviteDialogRendererProps> = (props) => {
 			}}
 		>
 			<DialogTitle
+				data-testid="request-invite-dialog-title"
 				id="request-invite-dialog-title"
 				sx={styles.dialogTitle}
 				color="text.secondary"
 			>
 				{dialogState.success
 					? i18n["confirm-request-dialog-title"]
-					: i18n["request-invite-form-title"]}
+					: i18n["request-invite-dialog-title"]}
 			</DialogTitle>
 			<Divider sx={styles.divider} />
 			<DialogContent
@@ -74,15 +76,23 @@ const InviteDialogRenderer: React.FC<IInviteDialogRendererProps> = (props) => {
 				sx={styles.dialogContent}
 			>
 				{dialogState.success ? (
-					<Container id="success-sent-invite-dialog-wrapper">
+					<Container
+						id="success-sent-invite-dialog-wrapper"
+						data-testid="success-sent-invite-dialog-wrapper"
+					>
 						<Typography sx={styles.confirmationText}>
 							{i18n["dialog-confirmation-text-content"]}
 						</Typography>
 					</Container>
 				) : (
-					<>
+					<Container>
 						<TextField
 							id="request-invite-dialog-name-input"
+							slotProps={{
+								htmlInput: {
+									"data-testid": "request-invite-dialog-name-input",
+								},
+							}}
 							label={i18n["form-name-input-placeholder"]}
 							fullWidth
 							margin="normal"
@@ -91,6 +101,11 @@ const InviteDialogRenderer: React.FC<IInviteDialogRendererProps> = (props) => {
 						/>
 						<TextField
 							id="request-invite-dialog-email-input"
+							slotProps={{
+								htmlInput: {
+									"data-testid": "request-invite-dialog-email-input",
+								},
+							}}
 							label={i18n["form-email-input-placeholder"]}
 							fullWidth
 							margin="normal"
@@ -100,6 +115,11 @@ const InviteDialogRenderer: React.FC<IInviteDialogRendererProps> = (props) => {
 						/>
 						<TextField
 							id="request-invite-dialog-confirm-email-input"
+							slotProps={{
+								htmlInput: {
+									"data-testid": "request-invite-dialog-confirm-email-input",
+								},
+							}}
 							label={i18n["form-confirm-email-input-placeholder"]}
 							fullWidth
 							margin="normal"
@@ -113,13 +133,14 @@ const InviteDialogRenderer: React.FC<IInviteDialogRendererProps> = (props) => {
 									{i18n[i18nErrorKey]}
 								</Typography>
 							))}
-					</>
+					</Container>
 				)}
 			</DialogContent>
 			<DialogActions sx={styles.dialogActionWrapper}>
 				{dialogState.success ? (
 					<Button
 						variant="outlined"
+						data-testid="form-confirm-button"
 						onClick={onDialogClose}
 						sx={{ ...styles.commonButtonStyle, ...styles.confirmInviteButton }}
 					>
@@ -131,6 +152,7 @@ const InviteDialogRenderer: React.FC<IInviteDialogRendererProps> = (props) => {
 						sx={{ ...styles.commonButtonStyle, ...styles.inviteButton }}
 						onClick={onSend}
 						disabled={dialogState.loading}
+						data-testid="form-send-request-button"
 					>
 						{dialogState.loading
 							? i18n["form-pending-state-button-content"]

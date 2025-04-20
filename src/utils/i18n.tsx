@@ -1,6 +1,7 @@
-import { supportLanguages } from "./languageContext";
+import { supportLanguages } from "./language-context";
 
 const en: Record<string, string> = {
+	"header-corp-name": "BROCCOLI & CO.",
 	"dialog-confirmation-text-content":
 		"You will be one of the first to experience Broccoli & Co. when we launch.",
 	"switch-lang-button": "To Chinese",
@@ -10,7 +11,7 @@ const en: Record<string, string> = {
 	"confirm-request-dialog-title": "All done!",
 	"footer-message": "Made with ♥ in Melbourne.",
 	"footer-legal-claim-message": "© 2016 Broccoli & Co. ALL rights reserved.",
-	"request-invite-form-title": "Request an invite",
+	"request-invite-dialog-title": "Request an invite",
 	"form-name-input-placeholder": "Full Name",
 	"form-email-input-placeholder": "Email",
 	"form-confirm-email-input-placeholder": "Confirm Email",
@@ -27,6 +28,7 @@ const en: Record<string, string> = {
 };
 
 const zh: Record<string, string> = {
+	"header-corp-name": "BROCCOLI & CO.",
 	"dialog-confirmation-text-content":
 		"在我们上线的时候，您将会是第一批体验Broccoli & Co.的用户。",
 	"switch-lang-button": "切换英文",
@@ -36,7 +38,7 @@ const zh: Record<string, string> = {
 	"confirm-request-dialog-title": "搞定了!",
 	"footer-message": "在墨尔本，用 ♥ 制作。",
 	"footer-legal-claim-message": "© 2016 Broccoli & Co. 保留所有权利。",
-	"request-invite-form-title": "申请邀请函",
+	"request-invite-dialog-title": "申请邀请函",
 	"form-name-input-placeholder": "您的全名",
 	"form-email-input-placeholder": "邮箱地址",
 	"form-confirm-email-input-placeholder": "重复一次邮箱地址",

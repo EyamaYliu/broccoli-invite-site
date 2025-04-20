@@ -2,7 +2,7 @@ import { useState, useReducer } from "react";
 import InviteDialogRenderer from "./requestInviteDialog-renderer";
 import { DialogState } from "./requestInviteDialog-renderer";
 
-interface IInviteDialogProps {
+export interface IInviteDialogProps {
 	shouldDialogOpen: boolean;
 	onDialogClose: () => void;
 	i18n: Record<string, string>;

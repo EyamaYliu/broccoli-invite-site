@@ -42,6 +42,7 @@ export const styles = {
 	switchLanguageButton: {
 		marginLeft: "auto",
 		marginRight: "2rem",
+		color: "text.secondary",
 	},
 	footerContent: {
 		textAlign: "center",

@@ -19,7 +19,7 @@ export const styles = {
 		margin: "0.5rem auto 1rem auto",
 	},
 	inviteButton: {
-		width: "25rem",
+		width: "22rem",
 		height: "3rem",
 	},
 	confirmInviteButton: {
