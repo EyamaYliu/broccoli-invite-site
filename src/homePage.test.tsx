@@ -11,26 +11,31 @@ vi.mock("./utils/language-context", () => ({
 }));
 
 vi.mock("./utils/i18n", () => ({
-	getI18nStrings: (lang: string) => ({
-		"request-invite-form-title": "Request Invite",
-		"form-name-input-placeholder": "Enter name",
-		"form-email-input-placeholder": "Enter email",
-		"form-confirm-email-input-placeholder": "Confirm email",
-		"form-send-button-content": "Send",
-		"form-pending-state-button-content": "Sending...",
-		"dialog-confirmation-text-content": "Your request has been sent!",
-		"home-page-main-title": "Welcome to HomePage",
-		"home-page-sub-title": "Experience the best",
-		"request-invite-button-content": "Request Invite",
-		"switch-lang-button": "Switch Language",
-		"footer-message": "Footer message",
-		"footer-legal-claim-message": "Legal claims",
-		"form-input-error-incomplete": "Incomplete input",
-		"form-input-error-name-too-short": "Name too short",
-		"form-input-error-email-format-invalid": "Invalid email format",
-		"form-input-error-confirm-email-mismatch": "Emails do not match",
-		"form-server-error-network": "Network error, please try again",
-	}),
+	getI18nStrings: (lang: string) => {
+		switch (lang) {
+			default:
+				return {
+					"request-invite-form-title": "Request Invite",
+					"form-name-input-placeholder": "Enter name",
+					"form-email-input-placeholder": "Enter email",
+					"form-confirm-email-input-placeholder": "Confirm email",
+					"form-send-button-content": "Send",
+					"form-pending-state-button-content": "Sending...",
+					"dialog-confirmation-text-content": "Your request has been sent!",
+					"home-page-main-title": "Welcome to HomePage",
+					"home-page-sub-title": "Experience the best",
+					"request-invite-button-content": "Request Invite",
+					"switch-lang-button": "Switch Language",
+					"footer-message": "Footer message",
+					"footer-legal-claim-message": "Legal claims",
+					"form-input-error-incomplete": "Incomplete input",
+					"form-input-error-name-too-short": "Name too short",
+					"form-input-error-email-format-invalid": "Invalid email format",
+					"form-input-error-confirm-email-mismatch": "Emails do not match",
+					"form-server-error-network": "Network error, please try again",
+				};
+		}
+	},
 }));
 
 import HomePage from "./homePage";
