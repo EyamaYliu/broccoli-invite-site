@@ -11,6 +11,8 @@ A simple React + TypeScript + Material UI application that allows users to reque
 
 ## 📦 Installation
 
+Make sure you have latest node.js version (or later than 18).
+
 Clone the repo and install dependencies from root path:
 
 ```bash
@@ -40,16 +42,4 @@ To run all unit tests:
 
 ```bash
 npm run test
-```
-
-To run tests in watch mode:
-
-```bash
-npm run test:watch
-```
-
-To run a specific test file:
-
-```bash
-npm run test:file src/components/__tests__/RequestInviteDialog.test.tsx
 ```
