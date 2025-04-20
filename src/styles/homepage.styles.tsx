@@ -15,11 +15,6 @@ export const styles = {
 		alignItems: "center",
 		justifyContent: "space-between",
 	},
-	headerFooterContainer: {
-		marginLeft: 0,
-		marginRight: 0,
-		maxWidth: "100%",
-	},
 	mainContent: {
 		flex: 1,
 		maxWidth: "35rem",

@@ -1,4 +1,3 @@
-// import  from "react";
 import {
 	Dialog,
 	DialogTitle,
@@ -59,6 +58,7 @@ const InviteDialogRenderer: React.FC<IInviteDialogRendererProps> = (props) => {
 					onExited: onDialogExited,
 				},
 			}}
+			aria-labelledby="request-invite-dialog-title"
 		>
 			<DialogTitle
 				data-testid="request-invite-dialog-title"
@@ -79,6 +79,7 @@ const InviteDialogRenderer: React.FC<IInviteDialogRendererProps> = (props) => {
 					<Container
 						id="success-sent-invite-dialog-wrapper"
 						data-testid="success-sent-invite-dialog-wrapper"
+						aria-live="polite"
 					>
 						<Typography sx={styles.confirmationText}>
 							{i18n["dialog-confirmation-text-content"]}
@@ -98,6 +99,7 @@ const InviteDialogRenderer: React.FC<IInviteDialogRendererProps> = (props) => {
 							margin="normal"
 							value={dialogState.name}
 							onChange={(e) => onFieldChange("name", e.target.value)}
+							aria-label={i18n["form-name-input-placeholder"]}
 						/>
 						<TextField
 							id="request-invite-dialog-email-input"
@@ -112,6 +114,7 @@ const InviteDialogRenderer: React.FC<IInviteDialogRendererProps> = (props) => {
 							type="email"
 							value={dialogState.email}
 							onChange={(e) => onFieldChange("email", e.target.value)}
+							aria-label={i18n["form-email-input-placeholder"]}
 						/>
 						<TextField
 							id="request-invite-dialog-confirm-email-input"
@@ -126,10 +129,18 @@ const InviteDialogRenderer: React.FC<IInviteDialogRendererProps> = (props) => {
 							type="email"
 							value={dialogState.confirmEmail}
 							onChange={(e) => onFieldChange("confirmEmail", e.target.value)}
+							aria-label={i18n["form-confirm-email-input-placeholder"]}
 						/>
 						{inputError &&
 							inputError.map((i18nErrorKey, index) => (
-								<Typography key={index} align="center" color="error" mt={1}>
+								<Typography
+									key={index}
+									align="center"
+									color="error"
+									mt={1}
+									role="alert"
+									aria-live="assertive"
+								>
 									{i18n[i18nErrorKey]}
 								</Typography>
 							))}
@@ -143,6 +154,7 @@ const InviteDialogRenderer: React.FC<IInviteDialogRendererProps> = (props) => {
 						data-testid="form-confirm-button"
 						onClick={onDialogClose}
 						sx={{ ...styles.commonButtonStyle, ...styles.confirmInviteButton }}
+						aria-label={i18n["form-confirm-button-content"]}
 					>
 						{i18n["form-confirm-button-content"]}
 					</Button>
@@ -153,6 +165,11 @@ const InviteDialogRenderer: React.FC<IInviteDialogRendererProps> = (props) => {
 						onClick={onSend}
 						disabled={dialogState.loading}
 						data-testid="form-send-request-button"
+						aria-label={
+							dialogState.loading
+								? i18n["form-pending-state-button-content"]
+								: i18n["form-send-button-content"]
+						}
 					>
 						{dialogState.loading
 							? i18n["form-pending-state-button-content"]
@@ -160,7 +177,7 @@ const InviteDialogRenderer: React.FC<IInviteDialogRendererProps> = (props) => {
 					</Button>
 				)}
 				{serverError && (
-					<Typography align="center" color="error" mt={1}>
+					<Typography align="center" color="error" mt={1} role="alert">
 						{serverError}
 					</Typography>
 				)}

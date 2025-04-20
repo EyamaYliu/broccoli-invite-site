@@ -18,22 +18,19 @@ const HomePage: React.FC = () => {
 	const i18n = getI18nStrings(language);
 
 	return (
-		<Container data-tid="container" disableGutters sx={styles.container}>
+		<Container
+			data-tid="homepage-wrapper"
+			disableGutters
+			sx={styles.container}
+			role="main"
+		>
 			<Box id="box" sx={styles.homePageContentBox}>
-				<Container
-					id="header-container"
-					sx={styles.headerFooterContainer}
-					maxWidth={false}
-				>
+				<Container id="header-wrapper" maxWidth={false} component="header">
 					<HomepageHeader i18n={i18n} toggleLanguage={toggleLanguage} />
 					<Divider />
 				</Container>
 				<HomepageMainContent i18n={i18n} />
-				<Container
-					id="footer-container"
-					sx={styles.headerFooterContainer}
-					maxWidth={false}
-				>
+				<Container id="footer-container" maxWidth={false} component="footer">
 					<Divider />
 					<HomepageFooter i18n={i18n} />
 				</Container>
@@ -44,7 +41,6 @@ const HomePage: React.FC = () => {
 
 const HomepageMainContent: React.FC<ICommonInterface> = (props) => {
 	const { i18n } = props;
-
 	const [isDialogOpen, setShouldDialogOpen] = React.useState(false);
 
 	const inviteDialogOnClose = () => setShouldDialogOpen(false);
@@ -77,6 +73,7 @@ const HomepageMainContent: React.FC<ICommonInterface> = (props) => {
 				sx={styles.button}
 				onClick={openRequestDialog}
 				data-testid="request-invite-button"
+				aria-label={i18n["request-invite-button-content"]}
 			>
 				{i18n["request-invite-button-content"]}
 			</Button>
@@ -91,7 +88,6 @@ const HomepageMainContent: React.FC<ICommonInterface> = (props) => {
 
 const HomepageHeader: React.FC<IHeader> = (props) => {
 	const { toggleLanguage, i18n } = props;
-
 	return (
 		<Box sx={styles.headerContent} data-testid="homepage-header-container">
 			<Typography
@@ -108,6 +104,7 @@ const HomepageHeader: React.FC<IHeader> = (props) => {
 				sx={{ ...styles.switchLanguageButton }}
 				onClick={toggleLanguage}
 				data-testid="switch-lang-button"
+				aria-label={i18n["switch-lang-button"]}
 			>
 				{i18n["switch-lang-button"]}
 			</Button>
